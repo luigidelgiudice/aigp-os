@@ -307,12 +307,9 @@
     margin: 0; padding: 0; list-style: none;
   }
   ul.bullets > li {
-    padding: 12px 0;
+    padding: 12px 0 12px 30px;
     border-top: 1px solid var(--rule);
-    display: grid;
-    grid-template-columns: 22px 1fr;
-    gap: 12px;
-    align-items: baseline;
+    position: relative;
     font-family: var(--serif);
     font-size: 16.5px;
     color: var(--ink);
@@ -321,10 +318,15 @@
   ul.bullets > li:first-child { border-top: 0; padding-top: 4px; }
   ul.bullets > li::before {
     content: "—";
+    position: absolute;
+    left: 0;
+    top: 12px;
     font-family: var(--mono);
     color: var(--muted-2);
     font-size: 12px;
+    line-height: 1.45;
   }
+  ul.bullets > li:first-child::before { top: 4px; }
   ul.bullets.neg > li::before {
     content: "×";
     color: var(--accent);
