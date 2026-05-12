@@ -1,0 +1,641 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="AIGP-OS — Norme e governance dell'AI: una prospettiva infrastrutturale. Specifica aperta, bozza di lavoro pubblica." />
+<meta name="color-scheme" content="light" />
+<title>AIGP-OS — Norme e governance dell'AI: una prospettiva infrastrutturale</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+
+<style>
+  :root {
+    --ink: #111111;
+    --ink-2: #2a2a2a;
+    --body: #333333;
+    --muted: #6a6a6a;
+    --muted-2: #9a9a9a;
+    --rule: #d8d8d8;
+    --rule-2: #ececec;
+    --paper: #ffffff;
+    --accent: #8a1a1a;
+    --serif: "Source Serif 4", Georgia, "Times New Roman", Times, serif;
+    --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    --col: 680px;
+    --col-wide: 880px;
+    --gutter: 32px;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { background: var(--paper); color: var(--body); }
+  body {
+    margin: 0;
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .col       { max-width: var(--col);      margin: 0 auto; padding: 0 var(--gutter); }
+  .col--wide { max-width: var(--col-wide); margin: 0 auto; padding: 0 var(--gutter); }
+
+  /* Banner */
+  .banner {
+    border-bottom: 1px solid var(--rule);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+  }
+  .banner__inner {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px var(--gutter); max-width: 1100px; margin: 0 auto; gap: 24px;
+  }
+  .banner__left { display: flex; gap: 22px; flex-wrap: wrap; }
+  .banner__left span::before {
+    content: ""; display: inline-block; width: 6px; height: 6px;
+    background: var(--accent); margin-right: 8px; transform: translateY(-1px);
+  }
+  .ref { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.04em; white-space: nowrap; }
+
+  /* Masthead */
+  header.mast { border-bottom: 1px solid var(--rule); }
+  .mast__inner {
+    display: flex; align-items: baseline; justify-content: space-between;
+    padding: 22px var(--gutter); max-width: 1100px; margin: 0 auto; gap: 24px;
+  }
+  .brand { display: flex; align-items: baseline; gap: 14px; border: 0; }
+  .brand__mark {
+    font-family: var(--serif); font-weight: 600; font-size: 20px;
+    letter-spacing: -0.01em; color: var(--ink); white-space: nowrap; flex-shrink: 0;
+  }
+  .brand__mark::before {
+    content: ""; display: inline-block; width: 9px; height: 9px;
+    background: var(--accent); margin-right: 10px; transform: translateY(-2px);
+  }
+  .brand__sub { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.04em; white-space: nowrap; }
+  .mast__nav {
+    display: inline-flex; align-items: baseline; gap: 10px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+    flex-wrap: wrap;
+  }
+  .mast__nav a { color: var(--muted); border: 0; padding: 2px 0; transition: color 100ms linear; }
+  .mast__nav a:hover { color: var(--ink); }
+  .mast__nav a[aria-current="page"] { color: var(--accent); border-bottom: 1px solid var(--accent); }
+  .mast__sep { color: var(--rule); user-select: none; }
+
+  /* Cover */
+  section.cover {
+    padding: 120px 0 104px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .cover__eyebrow {
+    font-family: var(--mono); font-size: 11.5px; color: var(--accent);
+    letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 24px;
+  }
+  .cover__eyebrow::before {
+    content: "§ 00 ·"; color: var(--muted); margin-right: 8px; letter-spacing: 0.04em;
+  }
+  .cover h1 {
+    font-family: var(--serif); font-weight: 500; font-size: 46px;
+    line-height: 1.12; letter-spacing: -0.015em; margin: 0 0 24px;
+    color: var(--ink); text-wrap: balance; max-width: 22ch;
+  }
+  .cover h1 em { font-style: italic; color: var(--ink-2); font-weight: 400; }
+  .cover__sub {
+    font-family: var(--serif); font-size: 20px; line-height: 1.55;
+    color: var(--ink-2); margin: 0; max-width: 60ch; text-wrap: pretty;
+  }
+  .cover__rule { margin: 48px 0 0; height: 1px; background: var(--rule); width: 96px; }
+
+  /* Sections */
+  section.sec { padding: 96px 0; border-bottom: 1px solid var(--rule); }
+  section.sec:last-of-type { border-bottom: 0; }
+  .sec__num {
+    font-family: var(--mono); font-size: 11.5px; color: var(--muted);
+    letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 16px;
+  }
+  .sec__num .accent { color: var(--accent); }
+  .sec h2 {
+    font-family: var(--serif); font-weight: 500; font-size: 30px;
+    line-height: 1.2; letter-spacing: -0.012em; margin: 0 0 24px;
+    color: var(--ink); text-wrap: balance; max-width: 28ch;
+  }
+  .sec p {
+    margin: 0 0 18px; color: var(--body);
+    font-size: 16.5px; line-height: 1.7; max-width: 62ch; text-wrap: pretty;
+  }
+  .sec p.lede {
+    font-family: var(--serif); font-size: 19px; line-height: 1.55;
+    color: var(--ink-2); margin-bottom: 24px; max-width: 58ch;
+  }
+  .sec p:last-child { margin-bottom: 0; }
+  .sec b, .sec strong { color: var(--ink); font-weight: 600; }
+  .sec i, .sec em { font-style: italic; }
+
+  /* Convergence table — what each framework requires, by principle */
+  table.frameworks {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+    margin-top: 8px;
+  }
+  table.frameworks th, table.frameworks td {
+    text-align: left;
+    padding: 18px 18px 18px 0;
+    vertical-align: top;
+    border-top: 1px solid var(--rule);
+  }
+  table.frameworks thead th {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    font-weight: 500;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 12px 18px 12px 0;
+  }
+  table.frameworks tbody tr:last-child td { border-bottom: 1px solid var(--rule); }
+  table.frameworks .col-ref {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    width: 30%;
+    white-space: nowrap;
+  }
+  table.frameworks .col-ref em {
+    display: block;
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--ink-2);
+    font-size: 14px;
+    margin-top: 4px;
+    white-space: normal;
+  }
+  table.frameworks .col-scope {
+    width: 22%;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  table.frameworks .col-req {
+    color: var(--body);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* Shared requirements (after the table) */
+  .shared {
+    margin: 32px 0 0;
+    padding: 28px 0 8px;
+    border-top: 1px solid var(--ink);
+  }
+  .shared__head {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin: 0 0 14px;
+  }
+  .shared__list {
+    list-style: none; padding: 0; margin: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .shared__list > li {
+    padding: 14px 18px 14px 0;
+    border-right: 1px solid var(--rule);
+    font-family: var(--serif);
+    font-size: 16px;
+    line-height: 1.4;
+    color: var(--ink);
+  }
+  .shared__list > li:last-child { border-right: 0; padding-right: 0; }
+  .shared__list > li::before {
+    content: counter(s, decimal-leading-zero) " ·";
+    counter-increment: s;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .shared__list { counter-reset: s; }
+
+  /* Missing — properties of the absent control point */
+  .missing {
+    margin: 12px 0 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+  }
+  .missing > li {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 24px;
+    align-items: baseline;
+  }
+  .missing > li:last-child { border-bottom: 0; }
+  .missing__k {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .missing__v {
+    font-family: var(--serif);
+    font-size: 17px;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  /* Quote-like neutral statement for §04 */
+  .statement {
+    margin: 12px 0 0;
+    padding: 28px 0;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    font-family: var(--serif);
+    font-size: 20px;
+    line-height: 1.55;
+    color: var(--ink);
+    max-width: 62ch;
+    text-wrap: pretty;
+  }
+  .statement::before {
+    content: "—"; display: block;
+    font-family: var(--mono); color: var(--accent);
+    font-size: 13px; margin-bottom: 14px; letter-spacing: 0.04em;
+  }
+
+  /* Negative list — what AIGP-OS does NOT do */
+  .negative {
+    margin: 8px 0 0; padding: 0; list-style: none;
+    border-top: 1px solid var(--rule);
+  }
+  .negative > li {
+    padding: 16px 0; border-bottom: 1px solid var(--rule);
+    display: grid; grid-template-columns: 100px 1fr; gap: 20px; align-items: baseline;
+  }
+  .negative__tag {
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--accent); letter-spacing: 0.06em;
+  }
+  .negative__text {
+    font-family: var(--serif); font-size: 17px; color: var(--ink); line-height: 1.45;
+  }
+
+  /* Conclusion */
+  .closing {
+    margin: 8px 0 0;
+    padding: 36px 0 0;
+    border-top: 1px solid var(--ink);
+  }
+  .closing p {
+    font-family: var(--serif);
+    font-size: 21px;
+    line-height: 1.5;
+    color: var(--ink);
+    max-width: 60ch;
+    margin: 0 0 14px;
+    text-wrap: pretty;
+  }
+  .closing p.muted { color: var(--ink-2); }
+
+  /* Colophon */
+  footer.colophon {
+    padding: 56px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .colophon__row {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted-2);
+    letter-spacing: 0.04em;
+  }
+
+  /* Responsive */
+  @media (max-width: 880px) {
+    .shared__list { grid-template-columns: 1fr 1fr; }
+    .shared__list > li:nth-child(2n) { border-right: 0; padding-right: 0; }
+    .shared__list > li { border-bottom: 1px solid var(--rule); }
+    .shared__list > li:nth-last-child(-n+2) { border-bottom: 0; }
+  }
+  @media (max-width: 720px) {
+    .cover { padding: 80px 0 64px; }
+    .cover h1 { font-size: 32px; }
+    .cover__sub { font-size: 17px; }
+    .sec { padding: 64px 0; }
+    .sec h2 { font-size: 24px; }
+    .missing > li, .negative > li { grid-template-columns: 1fr; gap: 6px; }
+    .shared__list { grid-template-columns: 1fr; }
+    .shared__list > li { border-right: 0; border-bottom: 1px solid var(--rule); padding-right: 0; }
+    .shared__list > li:last-child { border-bottom: 0; }
+    table.frameworks .col-ref { width: auto; }
+    table.frameworks .col-scope { display: none; }
+    .mast__inner { flex-wrap: wrap; gap: 12px; }
+    .statement { font-size: 17px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Banner -->
+<div class="banner">
+  <div class="banner__inner">
+    <div class="banner__left">
+      <span>Specifica aperta</span>
+      <span>Bozza di lavoro pubblica</span>
+      <span>A cura del gruppo editoriale AIGP-OS</span>
+    </div>
+    <span class="ref">Rif. AIGP-OS / WD-0004 · NORME</span>
+  </div>
+</div>
+
+<!-- Masthead -->
+<header class="mast">
+  <div class="mast__inner">
+    <a class="brand" href="index.html">
+      <span class="brand__mark">AIGP-OS</span>
+      <span class="brand__sub">Specifica aperta · v0.4</span>
+    </a>
+    <nav class="mast__nav" aria-label="Sezioni">
+      <a href="index.html">Specifica</a>
+      <span class="mast__sep" aria-hidden="true">·</span>
+      <a href="perche.html">Perché AIGP-OS</a>
+      <span class="mast__sep" aria-hidden="true">·</span>
+      <a href="one-diagram.html">One Diagram</a>
+      <span class="mast__sep" aria-hidden="true">·</span>
+      <a href="norme.html" aria-current="page">Norme</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Cover -->
+<section class="cover">
+  <div class="col--wide">
+    <p class="cover__eyebrow">Norme e governance dell'AI</p>
+    <h1>Norme e governance dell'AI: una prospettiva infrastrutturale<em>.</em></h1>
+    <p class="cover__sub">
+      Una lettura tecnica delle relazioni fra <b>AI Act</b>, <b>NIS2</b>,
+      <b>ISO/IEC 27001</b>, <b>ISO/IEC 42001</b> e <b>NIST AI RMF</b>,
+      e del ruolo che un protocollo di governance a livello di sistema
+      può assumere rispetto ai requisiti che essi pongono.
+    </p>
+    <div class="cover__rule" aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- §01 — Premessa -->
+<section class="sec" id="premessa">
+  <p class="sec__num col"><span class="accent">§ 01</span> · Premessa</p>
+  <div class="col">
+    <h2>Livelli diversi, stesso problema.</h2>
+    <p class="lede">
+      AI Act, NIS2 e gli standard ISO e NIST operano su piani differenti:
+      giuridico, organizzativo, di gestione del rischio. Pur essendo
+      strumenti eterogenei, convergono su un insieme ristretto di
+      requisiti chiave.
+    </p>
+    <p>
+      Letti per principi, e non per articoli, questi requisiti si possono
+      ricondurre a quattro proprietà ricorrenti: <b>controllo preventivo</b>
+      dell'uso dell'AI, <b>governance</b> documentata e verificabile,
+      <b>auditabilità</b> tecnica delle decisioni e <b>responsabilità</b>
+      attribuibile a soggetti identificabili.
+    </p>
+    <p>
+      Il piano giuridico definisce obblighi; il piano organizzativo
+      definisce processi; il piano della gestione del rischio definisce
+      metodi. Manca, in questa stratificazione, una definizione esplicita
+      dei meccanismi tecnici attraverso i quali tali requisiti possono
+      essere resi osservabili nei sistemi che effettivamente eseguono
+      l'AI.
+    </p>
+  </div>
+</section>
+
+<!-- §02 — Cosa chiedono norme e framework -->
+<section class="sec" id="quadri">
+  <p class="sec__num col--wide"><span class="accent">§ 02</span> · Quadri di riferimento</p>
+  <div class="col--wide">
+    <h2>Cosa chiedono norme e framework, per principi.</h2>
+    <p>
+      La tabella che segue riassume, in forma concettuale e non
+      legalistica, i principi che ciascun quadro normativo o di
+      <i>framework</i> rende espliciti. Non costituisce un'analisi di
+      conformità né un'interpretazione vincolante dei testi.
+    </p>
+
+    <table class="frameworks">
+      <thead>
+        <tr>
+          <th class="col-ref">Quadro</th>
+          <th class="col-scope">Piano</th>
+          <th class="col-req">Principi rilevanti</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-ref">AI Act<em>Reg. (UE) 2024/1689</em></td>
+          <td class="col-scope">Giuridico</td>
+          <td class="col-req">Controllo <i>ex-ante</i> dell'uso dei sistemi di AI; sorveglianza umana sulle decisioni a impatto rilevante; auditabilità dei sistemi lungo il ciclo di vita.</td>
+        </tr>
+        <tr>
+          <td class="col-ref">NIS2<em>Dir. (UE) 2022/2555</em></td>
+          <td class="col-scope">Sicurezza sistemica</td>
+          <td class="col-req">Gestione del rischio delle <i>capability</i> critiche, continuità e sicurezza dei servizi essenziali, tracciamento e notifica degli incidenti.</td>
+        </tr>
+        <tr>
+          <td class="col-ref">ISO/IEC 27001<em>Sistemi di gestione per la sicurezza delle informazioni</em></td>
+          <td class="col-scope">Organizzativo</td>
+          <td class="col-req">Controllo degli accessi e delle risorse critiche, separazione dei privilegi, registrazione e revisione delle attività.</td>
+        </tr>
+        <tr>
+          <td class="col-ref">ISO/IEC 42001<em>Sistemi di gestione per l'intelligenza artificiale</em></td>
+          <td class="col-scope">Organizzativo</td>
+          <td class="col-req">Governance dei sistemi di AI, tracciabilità delle decisioni, ruoli e responsabilità, riesame periodico.</td>
+        </tr>
+        <tr>
+          <td class="col-ref">NIST AI RMF 1.0<em>AI Risk Management Framework</em></td>
+          <td class="col-scope">Gestione del rischio</td>
+          <td class="col-req">Funzioni <i>Govern</i>, <i>Map</i>, <i>Measure</i>, <i>Manage</i>: indirizzo, individuazione del contesto d'uso, misurazione e trattamento del rischio.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="shared">
+      <p class="shared__head">Requisiti ricorrenti</p>
+      <ol class="shared__list">
+        <li>Controllo preventivo dell'uso.</li>
+        <li>Governance esplicita.</li>
+        <li>Auditabilità verificabile.</li>
+        <li>Responsabilità attribuibile.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- §03 — Il denominatore comune mancante -->
+<section class="sec" id="mancante">
+  <p class="sec__num col"><span class="accent">§ 03</span> · Denominatore mancante</p>
+  <div class="col">
+    <h2>Il denominatore comune mancante.</h2>
+    <p>
+      I requisiti elencati nei quadri di riferimento sono espressi in
+      termini di <i>cosa</i> deve essere garantito. La loro traduzione
+      operativa è oggi delegata a strumenti eterogenei — policy,
+      documentazione, controlli applicativi, registrazioni successive —
+      raramente ricondotti a uno stesso piano architetturale.
+    </p>
+    <p>
+      In particolare, manca un <b>punto di controllo tecnico</b> che
+      presenti, congiuntamente, le seguenti quattro proprietà.
+    </p>
+
+    <ul class="missing" aria-label="Proprietà mancanti">
+      <li>
+        <span class="missing__k">Non aggirabile</span>
+        <span class="missing__v">L'autorizzazione all'uso dell'AI non può essere ignorata, riscritta o omessa dal codice che la richiede.</span>
+      </li>
+      <li>
+        <span class="missing__k">Indipendente</span>
+        <span class="missing__v">Il punto di controllo è disaccoppiato dalle applicazioni: non dipende dalla loro cooperazione né dalla loro corretta configurazione.</span>
+      </li>
+      <li>
+        <span class="missing__k">Sotto-applicativo</span>
+        <span class="missing__v">Risiede al di sotto del livello applicativo, in una posizione che le applicazioni non possono modificare.</span>
+      </li>
+      <li>
+        <span class="missing__k">Evidenze tecniche</span>
+        <span class="missing__v">Produce, come effetto del proprio funzionamento, registrazioni verificabili delle decisioni assunte.</span>
+      </li>
+    </ul>
+
+    <p style="margin-top: 28px;">
+      L'assenza di un tale punto di controllo non è una lacuna delle
+      norme: è una lacuna dell'architettura dei sistemi. È, in altri
+      termini, un <b>problema architetturale</b>.
+    </p>
+  </div>
+</section>
+
+<!-- §04 — Dove si colloca AIGP-OS -->
+<section class="sec" id="colloca">
+  <p class="sec__num col"><span class="accent">§ 04</span> · Posizione</p>
+  <div class="col">
+    <h2>Dove si colloca AIGP-OS.</h2>
+    <p class="statement">
+      AIGP-OS esplora un possibile punto di controllo tecnico
+      <i>ex-ante</i>, a livello di sistema, coerente con i requisiti di
+      governance, auditabilità e controllo del rischio richiesti da norme
+      e framework, senza sostituirli né interpretarli.
+    </p>
+    <p>
+      Le norme e gli standard definiscono <b>obblighi</b>. AIGP-OS opera
+      sul piano dei <b>meccanismi tecnici</b>. I due piani sono
+      complementari: ciò che il diritto e gli standard prescrivono come
+      proprietà del sistema, un meccanismo come quello descritto può
+      contribuire a rendere osservabile e verificabile.
+    </p>
+  </div>
+</section>
+
+<!-- §05 — Cosa AIGP-OS NON fa rispetto alle norme -->
+<section class="sec" id="esclusioni">
+  <p class="sec__num col"><span class="accent">§ 05</span> · Esclusioni</p>
+  <div class="col">
+    <h2>Cosa AIGP-OS non fa rispetto alle norme.</h2>
+    <p>
+      Per evitare confusione fra piani distinti, è opportuno enunciare
+      esplicitamente l'ambito che AIGP-OS non occupa.
+    </p>
+
+    <ul class="negative" aria-label="Limiti di AIGP-OS rispetto alle norme">
+      <li>
+        <span class="negative__tag">NON FA</span>
+        <span class="negative__text">non interpreta la legge,</span>
+      </li>
+      <li>
+        <span class="negative__tag">NON FA</span>
+        <span class="negative__text">non garantisce conformità,</span>
+      </li>
+      <li>
+        <span class="negative__tag">NON FA</span>
+        <span class="negative__text">non sostituisce processi organizzativi o legali,</span>
+      </li>
+      <li>
+        <span class="negative__tag">NON FA</span>
+        <span class="negative__text">non elimina le responsabilità dei <i>deployer</i>,</span>
+      </li>
+      <li>
+        <span class="negative__tag">NON FA</span>
+        <span class="negative__text">non governa dataset né processi di <i>training</i>.</span>
+      </li>
+    </ul>
+
+    <p style="margin-top: 28px;">
+      L'osservanza delle norme resta una responsabilità degli operatori,
+      degli implementatori e delle autorità competenti. AIGP-OS non
+      sposta tale responsabilità: descrive un piano tecnico distinto.
+    </p>
+  </div>
+</section>
+
+<!-- §06 — Conclusione -->
+<section class="sec" id="conclusione">
+  <p class="sec__num col"><span class="accent">§ 06</span> · Conclusione</p>
+  <div class="col">
+    <h2>Conclusione.</h2>
+    <div class="closing">
+      <p>
+        Le norme definiscono cosa deve essere garantito.
+      </p>
+      <p>
+        <b>AIGP-OS si colloca sul piano di come una parte di tali garanzie
+        può essere resa una proprietà tecnica del sistema.</b>
+      </p>
+      <p class="muted">
+        La distanza fra i due piani è una caratteristica strutturale,
+        non un'opposizione: i due livelli si presuppongono a vicenda.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Colophon -->
+<footer class="colophon">
+  <div class="colophon__row">
+    <span>© 2026 Gruppo editoriale AIGP-OS — Specifica aperta · CC BY 4.0</span>
+    <span>AIGP-OS / WD-0004 · NORME · 12 maggio 2026</span>
+  </div>
+</footer>
+
+</body>
+</html>
