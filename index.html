@@ -164,6 +164,31 @@
     letter-spacing: 0.04em;
     white-space: nowrap;
   }
+  .mast__nav {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 10px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .mast__nav a {
+    color: var(--muted);
+    border: 0;
+    padding: 2px 0;
+    transition: color 100ms linear;
+  }
+  .mast__nav a:hover { color: var(--ink); }
+  .mast__nav a[aria-current="page"] {
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+  }
+  .mast__sep { color: var(--rule); user-select: none; }
+  @media (max-width: 720px) {
+    .mast__inner { flex-wrap: wrap; gap: 12px; }
+    .mast__ref { width: 100%; }
+  }
 
   /* ───────────────── Cover ───────────────── */
   section.cover {
@@ -584,10 +609,15 @@
 <!-- Masthead -->
 <header class="mast">
   <div class="mast__inner">
-    <a class="brand" href="#">
+    <a class="brand" href="index.html">
       <span class="brand__mark">AIGP-OS</span>
       <span class="brand__sub" data-i18n="mast.sub">Specifica aperta · v0.4</span>
     </a>
+    <nav class="mast__nav" aria-label="Sezioni">
+      <a href="index.html" aria-current="page" data-i18n="nav.spec">Specifica</a>
+      <span class="mast__sep" aria-hidden="true">·</span>
+      <a href="perche.html" data-i18n="nav.why">Perché AIGP-OS</a>
+    </nav>
     <span class="mast__ref" data-i18n="mast.ref">Rif. AIGP-OS / WD-0004 · 11 maggio 2026</span>
   </div>
 </header>
@@ -809,10 +839,6 @@
       <div><dt data-i18n="col.dt1">Documento</dt><dd data-i18n="col.dd1">AIGP-OS / WD-0004</dd></div>
       <div><dt data-i18n="col.dt2">Stadio</dt><dd data-i18n="col.dd2">Working Draft</dd></div>
       <div><dt data-i18n="col.dt3">Curatela</dt><dd data-i18n="col.dd3">Gruppo editoriale AIGP-OS</dd></div>
-         <div>
-  <dt data-i18n="col.dt_author">Autore / Fondatore</dt>
-  <dd data-i18n="col.dd_author">Luigi Del Giudice</dd>
-</div>
       <div><dt data-i18n="col.dt4">Licenza</dt><dd data-i18n="col.dd4">Creative Commons Attribution 4.0 Internazionale</dd></div>
     </dl>
     <div class="colophon__bottom">
