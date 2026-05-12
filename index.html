@@ -1011,6 +1011,11 @@
     }
     if (src && src["doc.title"]) document.title = src["doc.title"];
     else if (original["doc.title"]) document.title = original["doc.title"];
+    var pageLinks = document.querySelectorAll('a[href$=".html"], a[href*=".html?"]');
+    for (var k = 0; k < pageLinks.length; k++) {
+      var h = pageLinks[k].getAttribute('href').split('?')[0];
+      pageLinks[k].setAttribute('href', h + '?lang=' + lang);
+    }
     var opts = document.querySelectorAll(".lang__opt");
     for (var j = 0; j < opts.length; j++) {
       var on = opts[j].getAttribute("data-lang") === lang;

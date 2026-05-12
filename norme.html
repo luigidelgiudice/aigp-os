@@ -616,6 +616,11 @@
       if (v != null && el.innerHTML !== v) el.innerHTML = v;
     }
     document.title = titles[lang] || titles.it;
+    var pageLinks = document.querySelectorAll('a[href$=".html"], a[href*=".html?"]');
+    for (var k = 0; k < pageLinks.length; k++) {
+      var h = pageLinks[k].getAttribute('href').split('?')[0];
+      pageLinks[k].setAttribute('href', h + '?lang=' + lang);
+    }
     var opts = document.querySelectorAll(".lang__opt");
     for (var j = 0; j < opts.length; j++) {
       var on = opts[j].getAttribute("data-lang") === lang;

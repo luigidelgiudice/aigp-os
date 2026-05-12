@@ -648,5 +648,27 @@
   </div>
 </footer>
 
+<script>
+/* Propagate the user's language choice to internal links.
+   This page is monolingual but must not lose ?lang when navigating. */
+(function () {
+  var LANGS = ["it","en","fr","es"];
+  var p = new URLSearchParams(location.search);
+  var fromUrl = p.get("lang");
+  var fromStore = null;
+  try { fromStore = localStorage.getItem("aigp_lang"); } catch (e) {}
+  var lang = fromUrl || fromStore || "it";
+  if (LANGS.indexOf(lang) === -1) lang = "it";
+  if (fromUrl && fromUrl !== fromStore) {
+    try { localStorage.setItem("aigp_lang", lang); } catch (e2) {}
+  }
+  var links = document.querySelectorAll('a[href$=".html"], a[href*=".html?"]');
+  for (var i = 0; i < links.length; i++) {
+    var h = links[i].getAttribute("href").split("?")[0];
+    links[i].setAttribute("href", h + "?lang=" + lang);
+  }
+})();
+</script>
+
 </body>
 </html>
