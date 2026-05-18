@@ -300,10 +300,12 @@
   <div class="col--wide">
     <h2 data-i18n="s2.h2">Design Principles.</h2>
     <p data-i18n="s2.intro">
-      Gli otto principi che seguono definiscono le proprietà architetturali
-      che il protocollo deve preservare. Sono numerati per riferimento e
-      letti come un insieme: nessun principio è dispensabile senza
-      modificare la natura del protocollo.
+      I principi che seguono definiscono il comportamento tecnico del
+      sistema durante l'esecuzione di operazioni di intelligenza
+      artificiale. Gli otto principi definiscono le proprietà
+      architetturali che il protocollo deve preservare. Sono numerati per
+      riferimento e letti come un insieme: nessun principio è dispensabile
+      senza modificare la natura del protocollo.
     </p>
 
     <ol class="principles">
@@ -337,7 +339,7 @@
       </div></li>
       <li><div>
         <h3 data-i18n="s2.p8.h">Neutralità rispetto a modelli e vendor.</h3>
-        <p data-i18n="s2.p8.p">Il protocollo non dipende da un particolare modello, runtime o fornitore commerciale. Definisce un'interfaccia di governance a cui ogni implementazione si conforma.</p>
+        <p data-i18n="s2.p8.p">Il protocollo non dipende da un particolare modello, runtime o fornitore commerciale. Definisce un'interfaccia di controllo dell'esecuzione a cui ogni implementazione si conforma.</p>
       </div></li>
     </ol>
   </div>
@@ -450,7 +452,7 @@
       "s1.lede":"The principles that follow and the boundaries that accompany them constitute the invariants of the protocol. They are stated explicitly so that every implementation and every revision can be measured against them.",
       "s1.p1":"The invariants are not recommendations: they are structural properties. An implementation that violates them does not realise AIGP-OS, even if it adopts its name or terminology.",
       "s2.tag":"Design Principles","s2.h2":"Design Principles.",
-      "s2.intro":"The eight principles that follow define the architectural properties the protocol must preserve. They are numbered for reference and read as a whole: no principle is dispensable without altering the nature of the protocol.",
+      "s2.intro":"The following principles define the technical behaviour of the system during the execution of artificial intelligence operations. The eight principles define the architectural properties the protocol must preserve. They are numbered for reference and read as a whole: no principle is dispensable without altering the nature of the protocol.",
       "s2.p1.h":"AI as a critical system capability.","s2.p1.p":"AI is treated as a critical <i>capability</i> of the system, not as a library or an application feature. Its use is subject to the properties the system reserves for critical resources.",
       "s2.p2.h":"Mandatory interposition.","s2.p2.p":"Every invocation of AI traverses the protocol. Interposition is not optional and does not depend on the cooperation of the calling code.",
       "s2.p3.h":"Decision before action.","s2.p3.p":"The evaluation of context and intent is <i>ex-ante</i>: it precedes the invocation of the model. It is not a subsequent control nor a sample-based verification.",
@@ -458,7 +460,7 @@
       "s2.p5.h":"Audit by construction.","s2.p5.p":"Evidence is an effect of the protocol's operation, not an additional feature. The verifiability of decisions is structural.",
       "s2.p6.h":"Separation of availability and authorisation.","s2.p6.p":"The technical presence of a model does not imply authorisation of its use. The two layers — availability and authorisation — remain distinct by construction.",
       "s2.p7.h":"Human-in-the-Loop as a technical constraint.","s2.p7.p":"Where required, human intervention is not an operational procedure but a requirement imposed by the system. The protocol does not proceed in its absence.",
-      "s2.p8.h":"Neutrality across models and vendors.","s2.p8.p":"The protocol does not depend on a particular model, runtime or commercial provider. It defines a governance interface to which every implementation conforms.",
+      "s2.p8.h":"Neutrality across models and vendors.","s2.p8.p":"The protocol does not depend on a particular model, runtime or commercial provider. It defines an execution-control interface to which every implementation conforms.",
       "s3.tag":"Boundaries","s3.h2":"Boundaries — non-negotiable limits.",
       "s3.intro":"To the principles correspond explicit boundaries. These boundaries delimit what the protocol, by construction, does not occupy: they are as binding as the principles and contribute to defining its identity.",
       "s3.b1.tag":"DOES NOT GOVERN","s3.b1.h":"Contents — prompts and outputs.",
@@ -492,7 +494,7 @@
       "s1.lede":"Les principes qui suivent et les limites qui les accompagnent constituent les invariants du protocole. Ils sont énoncés explicitement pour que toute implémentation et toute révision puissent y être confrontées.",
       "s1.p1":"Les invariants ne sont pas des recommandations : ce sont des propriétés structurelles. Une implémentation qui les viole ne réalise pas AIGP-OS, même si elle en adopte le nom ou la terminologie.",
       "s2.tag":"Design Principles","s2.h2":"Design Principles.",
-      "s2.intro":"Les huit principes qui suivent définissent les propriétés architecturales que le protocole doit préserver. Ils sont numérotés pour référence et se lisent comme un ensemble : aucun principe n'est dispensable sans modifier la nature du protocole.",
+      "s2.intro":"Les principes qui suivent définissent le comportement technique du système pendant l'exécution d'opérations d'intelligence artificielle. Les huit principes définissent les propriétés architecturales que le protocole doit préserver. Ils sont numérotés pour référence et se lisent comme un ensemble : aucun principe n'est dispensable sans modifier la nature du protocole.",
       "s2.p1.h":"L'IA comme capacité critique de système.","s2.p1.p":"L'IA est traitée comme une <i>capability</i> critique du système, et non comme une bibliothèque ou une fonctionnalité applicative. Son usage est soumis aux propriétés que le système réserve aux ressources critiques.",
       "s2.p2.h":"Interposition obligatoire.","s2.p2.p":"Toute invocation de l'IA traverse le protocole. L'interposition n'est pas optionnelle et ne dépend pas de la coopération du code appelant.",
       "s2.p3.h":"Décision avant l'action.","s2.p3.p":"L'évaluation du contexte et de l'intention est <i>ex-ante</i> : elle précède l'invocation du modèle. Ce n'est ni un contrôle ultérieur ni une vérification par échantillonnage.",
@@ -500,7 +502,7 @@
       "s2.p5.h":"Audit par construction.","s2.p5.p":"Les preuves sont un effet du fonctionnement du protocole, et non une fonctionnalité supplémentaire. La vérifiabilité des décisions est structurelle.",
       "s2.p6.h":"Séparation entre disponibilité et autorisation.","s2.p6.p":"La présence technique d'un modèle n'implique pas l'autorisation de son usage. Les deux plans — disponibilité et autorisation — restent distincts par construction.",
       "s2.p7.h":"Human-in-the-Loop comme contrainte technique.","s2.p7.p":"Lorsque cela est requis, l'intervention humaine n'est pas une procédure opérationnelle mais une exigence imposée par le système. Le protocole ne progresse pas en son absence.",
-      "s2.p8.h":"Neutralité à l'égard des modèles et fournisseurs.","s2.p8.p":"Le protocole ne dépend ni d'un modèle, ni d'un runtime, ni d'un fournisseur commercial en particulier. Il définit une interface de gouvernance à laquelle toute implémentation se conforme.",
+      "s2.p8.h":"Neutralité à l'égard des modèles et fournisseurs.","s2.p8.p":"Le protocole ne dépend ni d'un modèle, ni d'un runtime, ni d'un fournisseur commercial en particulier. Il définit une interface de contrôle d'exécution à laquelle toute implémentation se conforme.",
       "s3.tag":"Boundaries","s3.h2":"Boundaries — limites non négociables.",
       "s3.intro":"Aux principes correspondent des limites explicites. Ces limites délimitent ce que le protocole, par construction, n'occupe pas : elles sont aussi contraignantes que les principes et contribuent à définir son identité.",
       "s3.b1.tag":"NE GOUVERNE PAS","s3.b1.h":"Contenus — prompts et sorties.",
@@ -534,7 +536,7 @@
       "s1.lede":"Los principios que siguen y los límites que los acompañan constituyen las invariantes del protocolo. Se enuncian explícitamente para que toda implementación y toda revisión puedan medirse con ellos.",
       "s1.p1":"Las invariantes no son recomendaciones: son propiedades estructurales. Una implementación que las viole no realiza AIGP-OS, aun cuando adopte su nombre o su terminología.",
       "s2.tag":"Design Principles","s2.h2":"Design Principles.",
-      "s2.intro":"Los ocho principios que siguen definen las propiedades arquitectónicas que el protocolo debe preservar. Están numerados a efectos de referencia y se leen como un conjunto: ningún principio es prescindible sin alterar la naturaleza del protocolo.",
+      "s2.intro":"Los principios que siguen definen el comportamiento técnico del sistema durante la ejecución de operaciones de inteligencia artificial. Los ocho principios definen las propiedades arquitectónicas que el protocolo debe preservar. Están numerados a efectos de referencia y se leen como un conjunto: ningún principio es prescindible sin alterar la naturaleza del protocolo.",
       "s2.p1.h":"La IA como capacidad crítica del sistema.","s2.p1.p":"La IA se trata como una <i>capability</i> crítica del sistema, no como una biblioteca o una funcionalidad aplicativa. Su uso queda sujeto a las propiedades que el sistema reserva a los recursos críticos.",
       "s2.p2.h":"Interposición obligatoria.","s2.p2.p":"Toda invocación de la IA atraviesa el protocolo. La interposición no es opcional y no depende de la cooperación del código que la solicita.",
       "s2.p3.h":"Decisión antes de la acción.","s2.p3.p":"La evaluación del contexto y la intención es <i>ex-ante</i>: precede a la invocación del modelo. No es un control posterior ni una verificación por muestreo.",
@@ -542,7 +544,7 @@
       "s2.p5.h":"Auditoría por construcción.","s2.p5.p":"Las evidencias son un efecto del funcionamiento del protocolo, no una funcionalidad adicional. La verificabilidad de las decisiones es estructural.",
       "s2.p6.h":"Separación entre disponibilidad y autorización.","s2.p6.p":"La presencia técnica de un modelo no implica la autorización de su uso. Los dos planos — disponibilidad y autorización — permanecen distintos por construcción.",
       "s2.p7.h":"Human-in-the-Loop como restricción técnica.","s2.p7.p":"Cuando se requiere, la intervención humana no es un procedimiento operativo sino un requisito impuesto por el sistema. El protocolo no avanza en su ausencia.",
-      "s2.p8.h":"Neutralidad frente a modelos y proveedores.","s2.p8.p":"El protocolo no depende de un modelo, runtime o proveedor comercial concretos. Define una interfaz de gobernanza a la que toda implementación se ajusta.",
+      "s2.p8.h":"Neutralidad frente a modelos y proveedores.","s2.p8.p":"El protocolo no depende de un modelo, runtime o proveedor comercial concretos. Define una interfaz de control de ejecución a la que toda implementación se ajusta.",
       "s3.tag":"Boundaries","s3.h2":"Boundaries — límites no negociables.",
       "s3.intro":"A los principios corresponden límites explícitos. Estos límites delimitan lo que el protocolo, por construcción, no ocupa: son tan vinculantes como los principios y contribuyen a definir su identidad.",
       "s3.b1.tag":"NO GOBIERNA","s3.b1.h":"Contenidos — prompts y salidas.",

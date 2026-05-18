@@ -632,12 +632,13 @@
 <!-- Cover -->
 <section class="cover">
   <div class="col">
-    <p class="cover__eyebrow" data-i18n="cover.eyebrow">AIGP-OS · Protocollo di governance</p>
-    <h1 data-i18n="cover.h1">Governance dell'Intelligenza Artificiale a livello di Sistema Operativo<em>.</em></h1>
+    <p class="cover__eyebrow" data-i18n="cover.eyebrow">AIGP-OS · Controllo dell'esecuzione dell'AI</p>
+    <h1 data-i18n="cover.h1">Controllo dell'esecuzione dell'Intelligenza Artificiale a livello di Sistema Operativo<em>.</em></h1>
     <p class="cover__sub" data-i18n="cover.sub">
-      AIGP-OS è un protocollo di governance dell'Intelligenza Artificiale
-      a livello di sistema operativo, progettato per trattare l'AI come
-      una capability critica di sistema, e non come una semplice libreria
+      AIGP-OS è un meccanismo di controllo dell'esecuzione, applicato
+      a livello di sistema operativo, che vincola l'invocazione e
+      l'esecuzione dei sistemi di Intelligenza Artificiale. Tratta l'AI
+      come una <i>capability</i> critica di sistema, non come una libreria
       o funzionalità applicativa.
     </p>
     <div class="cover__rule" aria-hidden="true"></div>
@@ -728,20 +729,22 @@
   <p class="sec__num col"><span class="accent">§ 02</span> · <span data-i18n="s2.tag">Il problema</span></p>
   <div class="col">
     <h2 data-i18n="s2.h2">Il problema.</h2>
-    <p data-i18n="s2.p1">Oggi la governance dell'AI è affidata quasi esclusivamente a:</p>
+    <p data-i18n="s2.p1">Oggi i sistemi che invocano l'AI non dispongono di uno strato tecnico di controllo dell'esecuzione. Tale controllo è tipicamente delegato a:</p>
     <ul class="list-items">
-      <li data-i18n="s2.l1">policy organizzative,</li>
+      <li data-i18n="s2.l1">policy applicative,</li>
       <li data-i18n="s2.l2">documentazione,</li>
-      <li data-i18n="s2.l3">controlli post-hoc,</li>
+      <li data-i18n="s2.l3">ispezioni post-hoc,</li>
       <li data-i18n="s2.l4">log applicativi.</li>
     </ul>
     <p data-i18n="s2.p2">
-      Questo approccio è sempre meno sufficiente in contesti regolati e
-      critici, dove normative come <b>AI Act</b>, <b>ISO/IEC 42001</b>,
-      <b>ISO/IEC 27001</b> e <b>NIS2</b> richiedono controlli preventivi,
-      auditabilità e responsabilità tecnica.
+      Questo approccio non offre un punto di applicazione tecnica
+      indipendente dalle applicazioni. In contesti operativi critici, in
+      cui esistono anche requisiti esterni — fra cui <b>AI Act</b>,
+      <b>ISO/IEC 42001</b>, <b>ISO/IEC 27001</b> e <b>NIS2</b> — l'assenza
+      di un meccanismo di controllo dell'esecuzione resta un limite
+      architetturale.
     </p>
-    <p data-i18n="s2.p3">Manca uno strato infrastrutturale chiaro dove collocare questa governance.</p>
+    <p data-i18n="s2.p3">Manca uno strato infrastrutturale dedicato dove far risiedere il controllo dell'esecuzione dell'AI.</p>
   </div>
 </section>
 
@@ -753,8 +756,8 @@
     <p data-i18n="s3.intro">AIGP-OS colma questo vuoto introducendo:</p>
     <ol class="principles">
       <li><div>
-        <h3 data-i18n="s3.p1.h">Autorizzazione ex-ante dell'uso dell'AI.</h3>
-        <p data-i18n="s3.p1.p">Ogni invocazione dell'AI è preceduta da una decisione esplicita che stabilisce se l'uso è ammesso, secondo le regole della governance vigente.</p>
+        <h3 data-i18n="s3.p1.h">Autorizzazione ex-ante dell'invocazione.</h3>
+        <p data-i18n="s3.p1.p">Ogni invocazione dell'AI è preceduta da una decisione esplicita che stabilisce se l'uso è ammesso, secondo i vincoli di esecuzione applicati dal sistema.</p>
       </div></li>
       <li><div>
         <h3 data-i18n="s3.p2.h">Enforcement non aggirabile a livello OS.</h3>
@@ -770,48 +773,51 @@
       </div></li>
       <li><div>
         <h3 data-i18n="s3.p5.h">Neutralità rispetto a modelli, vendor e applicazioni.</h3>
-        <p data-i18n="s3.p5.p">Il protocollo non dipende da un particolare modello, fornitore o applicazione. Definisce un'interfaccia di governance a cui ogni implementazione si conforma.</p>
+        <p data-i18n="s3.p5.p">Il protocollo non dipende da un particolare modello, fornitore o applicazione. Definisce un'interfaccia di controllo dell'esecuzione a cui ogni implementazione si conforma.</p>
       </div></li>
     </ol>
     <p class="pullquote" data-i18n="s3.note">
-      <strong>AIGP-OS non analizza prompt o output.</strong> Governa il
-      diritto di usare l'AI, non il suo contenuto.
+      <strong>AIGP-OS non analizza prompt o output.</strong> Vincola
+      tecnicamente l'invocazione dell'AI, non il suo contenuto.
     </p>
   </div>
 </section>
 
 <!-- §04 — Rilevanza normativa -->
 <section class="sec" id="normativa">
-  <p class="sec__num col--wide"><span class="accent">§ 04</span> · <span data-i18n="s4.tag">Rilevanza normativa</span></p>
+  <p class="sec__num col--wide"><span class="accent">§ 04</span> · <span data-i18n="s4.tag">Contesti esterni</span></p>
   <div class="col--wide">
-    <h2 data-i18n="s4.h2">Rilevanza normativa.</h2>
+    <h2 data-i18n="s4.h2">Contesti esterni di riferimento.</h2>
     <p data-i18n="s4.intro" style="max-width: 62ch;">
-      Il protocollo è pensato come abilitatore tecnico della conformità
-      ai principali framework di governance dell'AI.
+      Il sistema può essere adottato in contesti in cui esistono requisiti
+      normativi o standard esterni. AIGP-OS definisce un meccanismo
+      tecnico di controllo dell'esecuzione e <b>non implementa né
+      rappresenta</b> tali requisiti. La sua adozione non garantisce,
+      di per sé, la conformità giuridica.
     </p>
     <table class="norm">
       <thead>
         <tr>
-          <th class="col-ref" data-i18n="s4.th1">Quadro di riferimento</th>
-          <th class="col-rel" data-i18n="s4.th2">Contributo di AIGP-OS</th>
+          <th class="col-ref" data-i18n="s4.th1">Contesto esterno</th>
+          <th class="col-rel" data-i18n="s4.th2">Effetto tecnico di AIGP-OS</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td class="col-ref" data-i18n="s4.r1.ref">EU AI Act<em>Reg. (UE) 2024/1689</em></td>
-          <td class="col-rel" data-i18n="s4.r1.rel">Controlli ex-ante e <i>human oversight</i> sull'uso dei sistemi di AI, applicati prima dell'invocazione.</td>
+          <td class="col-rel" data-i18n="s4.r1.rel">Controllo ex-ante dell'invocazione dei modelli, applicato prima dell'esecuzione, con punto di applicazione indipendente dalle applicazioni chiamanti.</td>
         </tr>
         <tr>
           <td class="col-ref" data-i18n="s4.r2.ref">ISO/IEC 42001<em>AI Management System</em></td>
-          <td class="col-rel" data-i18n="s4.r2.rel">Strato tecnico per la tracciabilità delle decisioni e la responsabilità del sistema di gestione per l'AI.</td>
+          <td class="col-rel" data-i18n="s4.r2.rel">Produzione tecnica di registrazioni verificabili delle decisioni di invocazione, come effetto del funzionamento del sistema.</td>
         </tr>
         <tr>
-          <td class="col-ref" data-i18n="s4.r3.ref">ISO/IEC 27001<em>Governance delle capability critiche</em></td>
-          <td class="col-rel" data-i18n="s4.r3.rel">Trattamento dell'AI come capability critica del sistema informativo, soggetta a controllo degli accessi e dei privilegi.</td>
+          <td class="col-ref" data-i18n="s4.r3.ref">ISO/IEC 27001<em>Sicurezza delle informazioni</em></td>
+          <td class="col-rel" data-i18n="s4.r3.rel">Trattamento dell'AI come <i>capability</i> critica del sistema, soggetta a controllo tecnico degli accessi e dei privilegi.</td>
         </tr>
         <tr>
           <td class="col-ref" data-i18n="s4.r4.ref">NIS2<em>Dir. (UE) 2022/2555</em></td>
-          <td class="col-rel" data-i18n="s4.r4.rel">Gestione del rischio e responsabilità tecnica nei servizi essenziali e importanti, con evidenze ricostruibili per la notifica degli incidenti.</td>
+          <td class="col-rel" data-i18n="s4.r4.rel">Registrazione tecnica delle decisioni di invocazione e degli eventi associati, ricostruibile come traccia indipendente dalle applicazioni.</td>
         </tr>
       </tbody>
     </table>
@@ -869,9 +875,9 @@
       "doc.title":"AIGP-OS — Operating-System-Level Governance for Artificial Intelligence",
       "banner.l1":"Open specification","banner.l2":"Public working draft","banner.l3":"Maintained by the AIGP-OS editorial group",
       "mast.sub":"Open specification · v0.4","mast.ref":"Ref. AIGP-OS / WD-0004 · 11 May 2026",
-      "cover.eyebrow":"AIGP-OS · Governance protocol",
-      "cover.h1":"Operating-system-level governance for artificial intelligence<em>.</em>",
-      "cover.sub":"AIGP-OS is an operating-system-level governance protocol for artificial intelligence, designed to treat AI as a critical system capability rather than as a library or application feature.",
+      "cover.eyebrow":"AIGP-OS · AI execution control",
+      "cover.h1":"Operating-system-level execution control for Artificial Intelligence<em>.</em>",
+      "cover.sub":"AIGP-OS is a system-level execution-control mechanism, applied at the operating-system layer, that constrains the invocation and execution of Artificial Intelligence systems. It treats AI as a critical system <i>capability</i>, not as a library or application feature.",
       "s1.tag":"Objective","s1.h2":"A decision point before execution.",
       "s1.lede":"The objective of AIGP-OS is to introduce a non-bypassable, ex-ante decision point that determines whether and when AI can be invoked, prior to execution.",
       "s1.p1":"The decision is taken independently of the model, the vendor and the calling software. The protocol operates at the operating-system layer, where authorisation precedes invocation and cannot be evaded by the application requesting the use of AI.",
@@ -882,39 +888,39 @@
       "s1.fig.b3.tag":"03 · LAYER","s1.fig.b3.title":"AI Execution Layer","s1.fig.b3.desc":"Model invocation, inference and return — subject to authorisation.",
       "s1.fig.arr1":"request","s1.fig.arr2":"authorise",
       "s1.fig.cap":"Figure 1 — Position of AIGP-OS in the AI invocation chain. The authorisation decision is taken at t₁, before the execution of the model.",
-      "s2.tag":"The problem","s2.h2":"The problem.","s2.p1":"AI governance today is entrusted almost exclusively to:",
-      "s2.l1":"organisational policies,","s2.l2":"documentation,","s2.l3":"post-hoc controls,","s2.l4":"application logs.",
-      "s2.p2":"This approach is increasingly insufficient in regulated and critical contexts, where frameworks such as <b>AI Act</b>, <b>ISO/IEC 42001</b>, <b>ISO/IEC 27001</b> and <b>NIS2</b> require preventive controls, auditability and technical accountability.",
-      "s2.p3":"A clear infrastructural layer in which to place this governance is missing.",
+      "s2.tag":"The problem","s2.h2":"The problem.","s2.p1":"Systems that invoke AI today do not have a technical execution-control layer. Such control is typically delegated to:",
+      "s2.l1":"application policies,","s2.l2":"documentation,","s2.l3":"post-hoc inspections,","s2.l4":"application logs.",
+      "s2.p2":"This approach does not provide a technical enforcement point that is independent of the applications. In critical operating contexts where external requirements also exist — including <b>AI Act</b>, <b>ISO/IEC 42001</b>, <b>ISO/IEC 27001</b> and <b>NIS2</b> — the absence of an execution-control mechanism remains an architectural limit.",
+      "s2.p3":"A dedicated infrastructural layer in which to host AI execution control is missing.",
       "s3.tag":"Approach","s3.h2":"The AIGP-OS approach.","s3.intro":"AIGP-OS fills this gap by introducing:",
-      "s3.p1.h":"Ex-ante authorisation of AI use.","s3.p1.p":"Every invocation of AI is preceded by an explicit decision that determines whether the use is permitted, according to the rules of the governance in force.",
+      "s3.p1.h":"Ex-ante authorisation of invocation.","s3.p1.p":"Every invocation of AI is preceded by an explicit decision that determines whether the use is permitted, according to the execution constraints applied by the system.",
       "s3.p2.h":"Non-bypassable enforcement at the OS layer.","s3.p2.p":"The enforcement point sits at the operating-system layer, not in the calling application: the decision cannot be ignored, rewritten or bypassed by the code requesting AI.",
       "s3.p3.h":"Audit by construction of decisions.","s3.p3.p":"Every authorisation, refusal and applied condition produces, by construction, a verifiable record usable as technical evidence for internal and external audits.",
       "s3.p4.h":"Separation of availability and authorisation.","s3.p4.p":"The fact that a model is technically available does not imply that its use is authorised. AIGP-OS explicitly distinguishes these two planes.",
-      "s3.p5.h":"Neutrality across models, vendors and applications.","s3.p5.p":"The protocol does not depend on a particular model, vendor or application. It defines a governance interface to which every implementation conforms.",
-      "s3.note":"<strong>AIGP-OS does not analyse prompts or outputs.</strong> It governs the right to use AI, not its content.",
-      "s4.tag":"Regulatory relevance","s4.h2":"Regulatory relevance.",
-      "s4.intro":"The protocol is intended as a technical enabler of compliance with the principal AI governance frameworks.",
-      "s4.th1":"Reference framework","s4.th2":"Contribution of AIGP-OS",
-      "s4.r1.ref":"EU AI Act<em>Reg. (EU) 2024/1689</em>","s4.r1.rel":"Ex-ante controls and <i>human oversight</i> over the use of AI systems, applied before invocation.",
-      "s4.r2.ref":"ISO/IEC 42001<em>AI Management System</em>","s4.r2.rel":"Technical layer for the traceability of decisions and the accountability of the AI management system.",
-      "s4.r3.ref":"ISO/IEC 27001<em>Governance of critical capabilities</em>","s4.r3.rel":"Treatment of AI as a critical capability of the information system, subject to access and privilege control.",
-      "s4.r4.ref":"NIS2<em>Dir. (EU) 2022/2555</em>","s4.r4.rel":"Risk management and technical accountability in essential and important services, with reconstructable evidence for incident notification.",
+      "s3.p5.h":"Neutrality across models, vendors and applications.","s3.p5.p":"The protocol does not depend on a particular model, vendor or application. It defines an execution-control interface to which every implementation conforms.",
+      "s3.note":"<strong>AIGP-OS does not analyse prompts or outputs.</strong> It technically constrains the invocation of AI, not its content.",
+      "s4.tag":"External contexts","s4.h2":"External reference contexts.",
+      "s4.intro":"The system may be applied in contexts where normative or standard external requirements exist. AIGP-OS defines a technical execution-control mechanism and <b>does not implement or represent</b> such requirements. Its adoption does not, in itself, guarantee legal compliance.",
+      "s4.th1":"External context","s4.th2":"Technical effect of AIGP-OS",
+      "s4.r1.ref":"EU AI Act<em>Reg. (EU) 2024/1689</em>","s4.r1.rel":"Ex-ante control of model invocation, applied before execution, with an enforcement point independent of the calling applications.",
+      "s4.r2.ref":"ISO/IEC 42001<em>AI Management System</em>","s4.r2.rel":"Technical production of verifiable records of invocation decisions, as an effect of the system's operation.",
+      "s4.r3.ref":"ISO/IEC 27001<em>Information security</em>","s4.r3.rel":"Treatment of AI as a critical <i>capability</i> of the system, subject to technical access and privilege control.",
+      "s4.r4.ref":"NIS2<em>Dir. (EU) 2022/2555</em>","s4.r4.rel":"Technical recording of invocation decisions and related events, reconstructable as a trace independent of the applications.",
       "s5.tag":"Project status","s5.h2":"Project status.",
       "s5.r1.l":"Definition","s5.r1.v":"Protocol and architectural pattern.","s5.r1.m":"<span class=\"dot\"></span>Active",
       "s5.r2.l":"Implementation","s5.r2.v":"Enterprise reference implementation in development.","s5.r2.m":"<span class=\"dot\"></span>In progress",
       "col.tag":"Colophon",
       "col.dt1":"Document","col.dd1":"AIGP-OS / WD-0004","col.dt2":"Stage","col.dd2":"Working Draft",
       "col.dt3":"Editorship","col.dd3":"AIGP-OS editorial group","col.dt4":"Licence","col.dd4":"Creative Commons Attribution 4.0 International",
-      "col.bot1":"© 2026 AIGP-OS editorial group — Published as an open specification.","col.bot2":"Last revised 11 May 2026 · WD-0004"
+      "col.bot1":"© 2026 AIGP-OS editorial group — Published as an open specification.","col.legal":"Independent project · Legal notice →","col.bot2":"Last revised 11 May 2026 · WD-0004"
     },
     fr: {
       "doc.title":"AIGP-OS — Gouvernance de l'intelligence artificielle au niveau du système d'exploitation",
       "banner.l1":"Spécification ouverte","banner.l2":"Brouillon de travail public","banner.l3":"Maintenu par le groupe éditorial AIGP-OS",
       "mast.sub":"Spécification ouverte · v0.4","mast.ref":"Réf. AIGP-OS / WD-0004 · 11 mai 2026",
-      "cover.eyebrow":"AIGP-OS · Protocole de gouvernance",
-      "cover.h1":"Gouvernance de l'intelligence artificielle au niveau du système d'exploitation<em>.</em>",
-      "cover.sub":"AIGP-OS est un protocole de gouvernance de l'intelligence artificielle au niveau du système d'exploitation, conçu pour traiter l'IA comme une capacité critique de système, et non comme une simple bibliothèque ou fonctionnalité applicative.",
+      "cover.eyebrow":"AIGP-OS · Contrôle d'exécution de l'IA",
+      "cover.h1":"Contrôle d'exécution de l'Intelligence Artificielle au niveau du système d'exploitation<em>.</em>",
+      "cover.sub":"AIGP-OS est un mécanisme de contrôle d'exécution au niveau système, appliqué à la couche du système d'exploitation, qui contraint l'invocation et l'exécution des systèmes d'Intelligence Artificielle. Il traite l'IA comme une <i>capability</i> critique de système, et non comme une bibliothèque ou une fonctionnalité applicative.",
       "s1.tag":"Objectif","s1.h2":"Un point de décision avant l'exécution.",
       "s1.lede":"L'objectif d'AIGP-OS est d'introduire un point de décision ex-ante, non contournable, qui détermine si et quand l'IA peut être invoquée, avant l'exécution.",
       "s1.p1":"La décision est prise indépendamment du modèle, du fournisseur et du logiciel appelant. Le protocole opère au niveau du système d'exploitation, là où l'autorisation précède l'invocation et ne peut être éludée par l'application qui demande l'usage de l'IA.",
@@ -925,39 +931,39 @@
       "s1.fig.b3.tag":"03 · COUCHE","s1.fig.b3.title":"AI Execution Layer","s1.fig.b3.desc":"Invocation du modèle, inférence et retour — soumis à autorisation.",
       "s1.fig.arr1":"requête","s1.fig.arr2":"autorise",
       "s1.fig.cap":"Figure 1 — Position d'AIGP-OS dans la chaîne d'invocation de l'IA. La décision d'autorisation est prise à t₁, avant l'exécution du modèle.",
-      "s2.tag":"Le problème","s2.h2":"Le problème.","s2.p1":"La gouvernance de l'IA est aujourd'hui confiée presque exclusivement à :",
-      "s2.l1":"politiques organisationnelles,","s2.l2":"documentation,","s2.l3":"contrôles a posteriori,","s2.l4":"journaux applicatifs.",
-      "s2.p2":"Cette approche est de moins en moins suffisante dans les contextes réglementés et critiques, où des cadres tels que l'<b>AI Act</b>, l'<b>ISO/IEC 42001</b>, l'<b>ISO/IEC 27001</b> et la <b>NIS2</b> exigent des contrôles préventifs, l'auditabilité et la responsabilité technique.",
-      "s2.p3":"Il manque une couche infrastructurelle claire où loger cette gouvernance.",
+      "s2.tag":"Le problème","s2.h2":"Le problème.","s2.p1":"Les systèmes qui invoquent l'IA ne disposent pas aujourd'hui d'une couche technique de contrôle d'exécution. Ce contrôle est généralement délégué à :",
+      "s2.l1":"politiques applicatives,","s2.l2":"documentation,","s2.l3":"inspections a posteriori,","s2.l4":"journaux applicatifs.",
+      "s2.p2":"Cette approche n'offre pas de point d'application technique indépendant des applications. Dans des contextes opérationnels critiques où existent également des exigences externes — dont l'<b>AI Act</b>, l'<b>ISO/IEC 42001</b>, l'<b>ISO/IEC 27001</b> et la <b>NIS2</b> — l'absence d'un mécanisme de contrôle d'exécution demeure une limite architecturale.",
+      "s2.p3":"Il manque une couche infrastructurelle dédiée pour accueillir le contrôle d'exécution de l'IA.",
       "s3.tag":"Approche","s3.h2":"L'approche AIGP-OS.","s3.intro":"AIGP-OS comble ce vide en introduisant :",
-      "s3.p1.h":"Autorisation ex-ante de l'usage de l'IA.","s3.p1.p":"Chaque invocation de l'IA est précédée d'une décision explicite qui établit si l'usage est admis, conformément aux règles de la gouvernance en vigueur.",
+      "s3.p1.h":"Autorisation ex-ante de l'invocation.","s3.p1.p":"Chaque invocation de l'IA est précédée d'une décision explicite qui établit si l'usage est admis, conformément aux contraintes d'exécution appliquées par le système.",
       "s3.p2.h":"Application non contournable au niveau OS.","s3.p2.p":"Le point d'application se situe au niveau du système d'exploitation, et non dans l'application appelante : la décision ne peut être ignorée, réécrite ou contournée par le code qui demande l'IA.",
       "s3.p3.h":"Audit par construction des décisions.","s3.p3.p":"Toute autorisation, refus et condition appliquée produit, par construction, un enregistrement vérifiable, utilisable comme preuve technique pour les audits internes et externes.",
       "s3.p4.h":"Séparation entre disponibilité et autorisation.","s3.p4.p":"Le fait qu'un modèle soit techniquement disponible n'implique pas que son usage soit autorisé. AIGP-OS distingue explicitement ces deux plans.",
-      "s3.p5.h":"Neutralité à l'égard des modèles, fournisseurs et applications.","s3.p5.p":"Le protocole ne dépend ni d'un modèle, ni d'un fournisseur, ni d'une application en particulier. Il définit une interface de gouvernance à laquelle toute implémentation se conforme.",
-      "s3.note":"<strong>AIGP-OS n'analyse ni les <i>prompts</i> ni les sorties.</strong> Il gouverne le droit d'utiliser l'IA, non son contenu.",
-      "s4.tag":"Pertinence normative","s4.h2":"Pertinence normative.",
-      "s4.intro":"Le protocole se veut un facilitateur technique de la conformité aux principaux cadres de gouvernance de l'IA.",
-      "s4.th1":"Cadre de référence","s4.th2":"Contribution d'AIGP-OS",
-      "s4.r1.ref":"EU AI Act<em>Règl. (UE) 2024/1689</em>","s4.r1.rel":"Contrôles ex-ante et <i>human oversight</i> sur l'usage des systèmes d'IA, appliqués avant l'invocation.",
-      "s4.r2.ref":"ISO/IEC 42001<em>AI Management System</em>","s4.r2.rel":"Couche technique pour la traçabilité des décisions et la responsabilité du système de management de l'IA.",
-      "s4.r3.ref":"ISO/IEC 27001<em>Gouvernance des capacités critiques</em>","s4.r3.rel":"Traitement de l'IA comme capacité critique du système d'information, soumise au contrôle des accès et des privilèges.",
-      "s4.r4.ref":"NIS2<em>Dir. (UE) 2022/2555</em>","s4.r4.rel":"Gestion du risque et responsabilité technique dans les services essentiels et importants, avec des preuves reconstructibles pour la notification d'incident.",
+      "s3.p5.h":"Neutralité à l'égard des modèles, fournisseurs et applications.","s3.p5.p":"Le protocole ne dépend ni d'un modèle, ni d'un fournisseur, ni d'une application en particulier. Il définit une interface de contrôle d'exécution à laquelle toute implémentation se conforme.",
+      "s3.note":"<strong>AIGP-OS n'analyse ni les <i>prompts</i> ni les sorties.</strong> Il contraint techniquement l'invocation de l'IA, non son contenu.",
+      "s4.tag":"Contextes externes","s4.h2":"Contextes externes de référence.",
+      "s4.intro":"Le système peut être adopté dans des contextes où existent des exigences externes normatives ou standardisées. AIGP-OS définit un mécanisme technique de contrôle d'exécution et <b>n'implémente ni ne représente</b> ces exigences. Son adoption ne garantit pas, en elle-même, la conformité juridique.",
+      "s4.th1":"Contexte externe","s4.th2":"Effet technique d'AIGP-OS",
+      "s4.r1.ref":"EU AI Act<em>Règl. (UE) 2024/1689</em>","s4.r1.rel":"Contrôle ex-ante de l'invocation des modèles, appliqué avant l'exécution, avec un point d'application indépendant des applications appelantes.",
+      "s4.r2.ref":"ISO/IEC 42001<em>AI Management System</em>","s4.r2.rel":"Production technique d'enregistrements vérifiables des décisions d'invocation, comme effet du fonctionnement du système.",
+      "s4.r3.ref":"ISO/IEC 27001<em>Sécurité de l'information</em>","s4.r3.rel":"Traitement de l'IA comme <i>capability</i> critique du système, soumise à un contrôle technique des accès et des privilèges.",
+      "s4.r4.ref":"NIS2<em>Dir. (UE) 2022/2555</em>","s4.r4.rel":"Enregistrement technique des décisions d'invocation et des événements associés, reconstructible comme trace indépendante des applications.",
       "s5.tag":"État du projet","s5.h2":"État du projet.",
       "s5.r1.l":"Définition","s5.r1.v":"Protocole et patron d'architecture.","s5.r1.m":"<span class=\"dot\"></span>Actif",
       "s5.r2.l":"Implémentation","s5.r2.v":"Implémentation de référence entreprise en développement.","s5.r2.m":"<span class=\"dot\"></span>En cours",
       "col.tag":"Colophon",
       "col.dt1":"Document","col.dd1":"AIGP-OS / WD-0004","col.dt2":"Étape","col.dd2":"Working Draft",
       "col.dt3":"Direction éditoriale","col.dd3":"Groupe éditorial AIGP-OS","col.dt4":"Licence","col.dd4":"Creative Commons Attribution 4.0 International",
-      "col.bot1":"© 2026 Groupe éditorial AIGP-OS — Publié comme spécification ouverte.","col.bot2":"Dernière révision 11 mai 2026 · WD-0004"
+      "col.bot1":"© 2026 Groupe éditorial AIGP-OS — Publié comme spécification ouverte.","col.legal":"Projet indépendant · Mentions légales →","col.bot2":"Dernière révision 11 mai 2026 · WD-0004"
     },
     es: {
       "doc.title":"AIGP-OS — Gobernanza de la inteligencia artificial a nivel de sistema operativo",
       "banner.l1":"Especificación abierta","banner.l2":"Borrador público de trabajo","banner.l3":"Mantenido por el grupo editorial AIGP-OS",
       "mast.sub":"Especificación abierta · v0.4","mast.ref":"Ref. AIGP-OS / WD-0004 · 11 de mayo de 2026",
-      "cover.eyebrow":"AIGP-OS · Protocolo de gobernanza",
-      "cover.h1":"Gobernanza de la inteligencia artificial a nivel de sistema operativo<em>.</em>",
-      "cover.sub":"AIGP-OS es un protocolo de gobernanza de la inteligencia artificial a nivel de sistema operativo, diseñado para tratar la IA como una capacidad crítica del sistema, y no como una simple biblioteca o funcionalidad de aplicación.",
+      "cover.eyebrow":"AIGP-OS · Control de ejecución de la IA",
+      "cover.h1":"Control de ejecución de la Inteligencia Artificial a nivel de sistema operativo<em>.</em>",
+      "cover.sub":"AIGP-OS es un mecanismo de control de ejecución a nivel de sistema, aplicado en la capa del sistema operativo, que restringe la invocación y la ejecución de los sistemas de Inteligencia Artificial. Trata la IA como una <i>capability</i> crítica del sistema, no como una biblioteca ni como una funcionalidad de aplicación.",
       "s1.tag":"Objetivo","s1.h2":"Un punto de decisión antes de la ejecución.",
       "s1.lede":"El objetivo de AIGP-OS es introducir un punto de decisión ex-ante, no eludible, que determine si y cuándo la IA puede ser invocada, antes de la ejecución.",
       "s1.p1":"La decisión se toma con independencia del modelo, del proveedor y del software que la solicita. El protocolo opera en la capa del sistema operativo, donde la autorización precede a la invocación y no puede ser eludida por la aplicación que requiere el uso de la IA.",
@@ -968,31 +974,31 @@
       "s1.fig.b3.tag":"03 · CAPA","s1.fig.b3.title":"AI Execution Layer","s1.fig.b3.desc":"Invocación del modelo, inferencia y retorno — sujetos a autorización.",
       "s1.fig.arr1":"solicitud","s1.fig.arr2":"autoriza",
       "s1.fig.cap":"Figura 1 — Posición de AIGP-OS en la cadena de invocación de la IA. La decisión de autorización se toma en t₁, antes de la ejecución del modelo.",
-      "s2.tag":"El problema","s2.h2":"El problema.","s2.p1":"Hoy la gobernanza de la IA recae casi exclusivamente en:",
-      "s2.l1":"políticas organizativas,","s2.l2":"documentación,","s2.l3":"controles ex post,","s2.l4":"registros de aplicación.",
-      "s2.p2":"Este enfoque es cada vez menos suficiente en contextos regulados y críticos, donde marcos como el <b>AI Act</b>, <b>ISO/IEC 42001</b>, <b>ISO/IEC 27001</b> y <b>NIS2</b> exigen controles preventivos, auditabilidad y responsabilidad técnica.",
-      "s2.p3":"Falta una capa de infraestructura clara en la que ubicar esta gobernanza.",
+      "s2.tag":"El problema","s2.h2":"El problema.","s2.p1":"Los sistemas que invocan la IA no disponen hoy de una capa técnica de control de ejecución. Dicho control suele delegarse a:",
+      "s2.l1":"políticas aplicativas,","s2.l2":"documentación,","s2.l3":"inspecciones ex post,","s2.l4":"registros de aplicación.",
+      "s2.p2":"Este enfoque no ofrece un punto de aplicación técnica independiente de las aplicaciones. En contextos operativos críticos en los que también existen requisitos externos — entre ellos <b>AI Act</b>, <b>ISO/IEC 42001</b>, <b>ISO/IEC 27001</b> y <b>NIS2</b> — la ausencia de un mecanismo de control de ejecución sigue siendo un límite arquitectónico.",
+      "s2.p3":"Falta una capa de infraestructura dedicada en la que alojar el control de ejecución de la IA.",
       "s3.tag":"Enfoque","s3.h2":"El enfoque AIGP-OS.","s3.intro":"AIGP-OS cubre este vacío introduciendo:",
-      "s3.p1.h":"Autorización ex-ante del uso de la IA.","s3.p1.p":"Cada invocación de la IA va precedida por una decisión explícita que determina si el uso es admisible, conforme a las reglas de la gobernanza vigente.",
+      "s3.p1.h":"Autorización ex-ante de la invocación.","s3.p1.p":"Cada invocación de la IA va precedida por una decisión explícita que determina si el uso es admisible, conforme a las restricciones de ejecución aplicadas por el sistema.",
       "s3.p2.h":"Aplicación no eludible a nivel de SO.","s3.p2.p":"El punto de aplicación reside en la capa del sistema operativo, no en la aplicación que invoca: la decisión no puede ser ignorada, reescrita ni eludida por el código que solicita la IA.",
       "s3.p3.h":"Auditoría por construcción de las decisiones.","s3.p3.p":"Toda autorización, denegación y condición aplicada produce, por construcción, un registro verificable, utilizable como evidencia técnica para auditorías internas y externas.",
       "s3.p4.h":"Separación entre disponibilidad y autorización.","s3.p4.p":"El hecho de que un modelo esté técnicamente disponible no implica que su uso esté autorizado. AIGP-OS distingue de manera explícita estos dos planos.",
-      "s3.p5.h":"Neutralidad frente a modelos, proveedores y aplicaciones.","s3.p5.p":"El protocolo no depende de un modelo, proveedor o aplicación concretos. Define una interfaz de gobernanza a la que toda implementación se ajusta.",
-      "s3.note":"<strong>AIGP-OS no analiza <i>prompts</i> ni salidas.</strong> Gobierna el derecho de usar la IA, no su contenido.",
-      "s4.tag":"Relevancia normativa","s4.h2":"Relevancia normativa.",
-      "s4.intro":"El protocolo se concibe como facilitador técnico del cumplimiento de los principales marcos de gobernanza de la IA.",
-      "s4.th1":"Marco de referencia","s4.th2":"Contribución de AIGP-OS",
-      "s4.r1.ref":"EU AI Act<em>Regl. (UE) 2024/1689</em>","s4.r1.rel":"Controles ex-ante y <i>human oversight</i> sobre el uso de los sistemas de IA, aplicados antes de la invocación.",
-      "s4.r2.ref":"ISO/IEC 42001<em>AI Management System</em>","s4.r2.rel":"Capa técnica para la trazabilidad de las decisiones y la responsabilidad del sistema de gestión para la IA.",
-      "s4.r3.ref":"ISO/IEC 27001<em>Gobernanza de las capacidades críticas</em>","s4.r3.rel":"Tratamiento de la IA como capacidad crítica del sistema de información, sujeta a control de accesos y privilegios.",
-      "s4.r4.ref":"NIS2<em>Dir. (UE) 2022/2555</em>","s4.r4.rel":"Gestión del riesgo y responsabilidad técnica en los servicios esenciales e importantes, con evidencias reconstruibles para la notificación de incidentes.",
+      "s3.p5.h":"Neutralidad frente a modelos, proveedores y aplicaciones.","s3.p5.p":"El protocolo no depende de un modelo, proveedor o aplicación concretos. Define una interfaz de control de ejecución a la que toda implementación se ajusta.",
+      "s3.note":"<strong>AIGP-OS no analiza <i>prompts</i> ni salidas.</strong> Restringe técnicamente la invocación de la IA, no su contenido.",
+      "s4.tag":"Contextos externos","s4.h2":"Contextos externos de referencia.",
+      "s4.intro":"El sistema puede adoptarse en contextos en los que existen requisitos normativos o de estándar externos. AIGP-OS define un mecanismo técnico de control de ejecución y <b>no implementa ni representa</b> dichos requisitos. Su adopción no garantiza, por sí misma, el cumplimiento jurídico.",
+      "s4.th1":"Contexto externo","s4.th2":"Efecto técnico de AIGP-OS",
+      "s4.r1.ref":"EU AI Act<em>Regl. (UE) 2024/1689</em>","s4.r1.rel":"Control ex-ante de la invocación de los modelos, aplicado antes de la ejecución, con un punto de aplicación independiente de las aplicaciones que invocan.",
+      "s4.r2.ref":"ISO/IEC 42001<em>AI Management System</em>","s4.r2.rel":"Producción técnica de registros verificables de las decisiones de invocación, como efecto del funcionamiento del sistema.",
+      "s4.r3.ref":"ISO/IEC 27001<em>Seguridad de la información</em>","s4.r3.rel":"Tratamiento de la IA como <i>capability</i> crítica del sistema, sujeta a un control técnico de accesos y privilegios.",
+      "s4.r4.ref":"NIS2<em>Dir. (UE) 2022/2555</em>","s4.r4.rel":"Registro técnico de las decisiones de invocación y de los eventos asociados, reconstruible como traza independiente de las aplicaciones.",
       "s5.tag":"Estado del proyecto","s5.h2":"Estado del proyecto.",
       "s5.r1.l":"Definición","s5.r1.v":"Protocolo y patrón arquitectónico.","s5.r1.m":"<span class=\"dot\"></span>Activo",
       "s5.r2.l":"Implementación","s5.r2.v":"Implementación de referencia para empresas en desarrollo.","s5.r2.m":"<span class=\"dot\"></span>En curso",
       "col.tag":"Colofón",
       "col.dt1":"Documento","col.dd1":"AIGP-OS / WD-0004","col.dt2":"Etapa","col.dd2":"Working Draft",
       "col.dt3":"Curaduría","col.dd3":"Grupo editorial AIGP-OS","col.dt4":"Licencia","col.dd4":"Creative Commons Attribution 4.0 Internacional",
-      "col.bot1":"© 2026 Grupo editorial AIGP-OS — Publicado como especificación abierta.","col.bot2":"Última revisión 11 de mayo de 2026 · WD-0004"
+      "col.bot1":"© 2026 Grupo editorial AIGP-OS — Publicado como especificación abierta.","col.legal":"Proyecto independiente · Aviso legal →","col.bot2":"Última revisión 11 de mayo de 2026 · WD-0004"
     }
   };
 

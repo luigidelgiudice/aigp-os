@@ -483,7 +483,7 @@
     <h2>Diagramma concettuale.</h2>
     <p>
       Tre strati: <b>Application Layer</b>, <b>AIGP-OS</b> come
-      <i>Decision Authority</i> a livello di sistema operativo, e
+      <i>Control Unit</i> a livello di sistema operativo, e
       <b>AI Execution Layer</b>. La richiesta proveniente dalle applicazioni
       attraversa AIGP-OS, che decide ex-ante; solo se autorizzata, l'esecuzione
       del modello ha luogo.
@@ -515,7 +515,7 @@
       <line x1="420" y1="148" x2="680" y2="148" stroke="#8a1a1a" stroke-width="1" stroke-dasharray="3 3"></line>
       <foreignObject x="440" y="78" width="220" height="62">
         <div xmlns="http://www.w3.org/1999/xhtml" class="box-content">
-          <span class="box-tag box-tag--accent">02 · DECISION AUTHORITY</span>
+          <span class="box-tag box-tag--accent">02 · CONTROL UNIT</span>
           <span class="box-title">AIGP-OS</span>
         </div>
       </foreignObject>
@@ -554,8 +554,9 @@
     </svg>
     <figcaption>
       Figura 1 — Posizione di AIGP-OS nella catena di invocazione dell'AI.
-      La decisione di autorizzazione è presa al livello del sistema operativo,
-      prima dell'esecuzione del modello.
+      La <i>control unit</i> modifica il comportamento di esecuzione del
+      sistema intercettando e regolando le richieste di invocazione
+      dell'AI prima dell'esecuzione del modello.
     </figcaption>
   </figure>
 </section>
